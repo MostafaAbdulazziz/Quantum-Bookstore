@@ -134,21 +134,6 @@ Ensure the `pom.xml` includes:
     </dependency>
 </dependencies>
 ```
-
-## Assumptions and Notes
-- **Package Structure**: `QuantumBookstoreFullTest` is in `com.bookstore`, while other classes are in `com.bookstore.model`, `com.bookstore.service`, `com.bookstore.service.providers`, and `com.bookstore.system`.
-- **Method Naming**: Uses camelCase (`addBook`, `buyBook`, `removeOutdatedBooks`) to align with Java conventions.
-- **Current Year**: Hardcoded to 2025 for `removeOutdatedBooks`.
-- **SOLID Compliance**:
-    - **SRP**: Partially violated, as `PurchaseService` handles multiple book types.
-    - **OCP**: Violated, as adding new book types requires modifying `PurchaseService` and `buyBook`.
-    - **LSP, ISP, DIP**: Compliant, with proper use of interfaces and inheritance.
-- **Improvements**:
-    - Add validation for duplicate ISBNs in `addBook`.
-    - Use a `PurchaseStrategy` interface for better SRP and OCP compliance.
-    - Replace `ArrayList<Book>` with `Map<String, Book>` for O(1) ISBN lookups.
-    - Add "Quantum Bookstore" prefix to `PurchaseService` messages for consistency.
-
 ## Contributing
 1. Fork the repository.
 2. Create a feature branch (`git checkout -b feature/your-feature`).
